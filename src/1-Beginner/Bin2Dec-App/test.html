@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bin2Dec Converter</title>
+        <style>
+            /* 添加一些基本的样式 */
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f4f4f4;
+            }
+    
+            .container {
+                text-align: center;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            input {
+                padding: 10px;
+                font-size: 1rem;
+                width: 200px;
+                margin-bottom: 10px;
+            }
+    
+            button {
+                padding: 10px;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+    
+            .output {
+                margin-top: 10px;
+                font-size: 1.2rem;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Bin2Dec Converter</h1>
+            <input type="text" id="binaryInput" placeholder="Enter binary number" maxlength="8">
+            <br>
+            <button onclick="convertToDecimal()">Converter</button>
+            <div id="output" class="output"></div>
+        </div>
+
+        <script>
+            function convertToDecimal() {
+                const binaryInput = document.getElementById('binaryInput').value;
+                const output = document.getElementById('output');
+
+                // 验证输入是否合法
+                if(/^[01]{1,8}$/.test(binaryInput)){
+                    // 将二进制转化为十进制
+                    const decimal = parseInt(binaryInput, 2);
+                    output.textContent = `Decimal: ${decimal}`;
+                }else{
+                    output.textContent = 'Please enter a valid binary number (up to 8 digits of 0s and 1s).';
+                }
+            }
+        </script>
+    </body>
+</html>
